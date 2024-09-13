@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const reactConcepts = new Set(['components', 'jsx', 'hooks', 'async']);
      
         const commonConcepts = findIntersection(jsConcepts, reactConcepts);
-        document.getElementById("room2Result").textContent = `The code to unlock the door is: ${Array.from(commonConcepts).join(', ')}`;
+        document.getElementById("room2Result").textContent = `The code to unlock the door is: async${Array.from(commonConcepts).join(', ')}`;
     });
 
 
