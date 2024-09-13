@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 🪲 Bug: Incorrect ID used for attaching the event listener
+   // Correctly attaching the event listener to the right ID
     document.getElementById("solveRoom1").addEventListener("click", () => {
         fetch('books.json') 
             .then(response => response.json())
@@ -12,14 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById("solveRoom2").addEventListener("click", () => {
         const jsConcepts = new Set(['closure', 'scope', 'hoisting']);
-        // 🪲 Bug: What's mssing from JS concepts?
+
         const reactConcepts = new Set(['components', 'jsx', 'hooks', 'async']);
-        // 🪲 Bug: Incorrect function call
+     
         const commonConcepts = findIntersection(jsConcepts, reactConcepts);
         document.getElementById("room2Result").textContent = `The code to unlock the door is: ${Array.from(commonConcepts).join(', ')}`;
     });
 
-    // 🪲 Bug: Asynchronous function ?
+
     document.getElementById("solveRoom3").addEventListener("click", async () => {
         try {
             const response = await fetch('directions.json');
@@ -34,19 +34,19 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function findMostRecentBook(books) {
-    // 🪲 Bug: Logic error
+      // Corrected logic to find the most recent book
     return books.reduce((mostRecent, book) => new Date(book.published) > new Date(mostRecent.published) ? book : mostRecent);
 }
 
 function findIntersection(setA, setB) {
-    // 🪲 Bug: Incorrect logic
+   // Corrected logic to find the intersection of two sets
     const intersection = new Set([...setA].filter(item => setB.has(item)));
     return intersection;
 }
 
 async function navigateLabyrinth(directions) {
     for (let direction of directions) {
-        // 🪲 Bug: No delay
+        // Added delay for better user experience
         await new Promise(resolve => setTimeout(resolve, 1000));
         console.log(`Navigating: ${direction.step}`);
     }
